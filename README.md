@@ -1,13 +1,13 @@
 # OLifie - Your Ultimate Life Organizer and AI Companion
 
-![OLifie Logo]([https://github.com/YourUsername/YourRepoName/raw/main/assets/logo.png](https://github.com/ABHIJATSARARI/oliife_initial/blob/main/assets/sple1.png)) <!-- Replace with actual path -->
+![OLifie Logo](https://github.com/ABHIJATSARARI/oliife_initial/blob/main/assets/sple1.png) <!-- Replace with actual path -->
 
 
 OLifie is an innovative mobile application designed as a comprehensive life organizer and AI companion. The app integrates various features to help users manage their health, daily activities, sustainability goals, and emotional well-being. With a sleek and intuitive interface, OLifie offers a unified experience that combines personalized AI-driven insights, health tracking, mindfulness exercises, and social engagement.
 
 ## 🖼️ App Mockup
 
-![OLifie Mockup]([https://github.com/YourUsername/YourRepoName/raw/main/assets/mockup.png](https://github.com/ABHIJATSARARI/oliife_initial/blob/main/utils/Screenshot%202024-08-12%20at%2012.48.42%E2%80%AFAM.png))
+![OLifie Mockup](https://github.com/ABHIJATSARARI/oliife_initial/blob/main/utils/Screenshot%202024-08-12%20at%2012.48.42%E2%80%AFAM.png)
 ![wnd](https://github.com/ABHIJATSARARI/oliife_initial/blob/main/utils/Screenshot%202024-08-12%20at%206.20.34%E2%80%AFPM.png)<!-- Replace with actual path -->
 
 ## ✨ Features
