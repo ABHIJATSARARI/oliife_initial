@@ -1,14 +1,22 @@
 # OLifie - Your Ultimate Life Organizer and AI Companion
 
-![OLifie Logo](https://github.com/ABHIJATSARARI/oliife_initial/blob/main/assets/sple1.png) <!-- Replace with actual path -->
 
+<p align="center">
+  <img src="https://github.com/ABHIJATSARARI/oliife_initial/blob/main/assets/sple1.png" alt="OLifie Logo" width="200px">
+</p>
 
 OLifie is an innovative mobile application designed as a comprehensive life organizer and AI companion. The app integrates various features to help users manage their health, daily activities, sustainability goals, and emotional well-being. With a sleek and intuitive interface, OLifie offers a unified experience that combines personalized AI-driven insights, health tracking, mindfulness exercises, and social engagement.
 
 ## 🖼️ App Mockup
 
-![OLifie Mockup](https://github.com/ABHIJATSARARI/oliife_initial/blob/main/utils/Screenshot%202024-08-12%20at%2012.48.42%E2%80%AFAM.png)
-![wnd](https://github.com/ABHIJATSARARI/oliife_initial/blob/main/utils/Screenshot%202024-08-12%20at%206.20.34%E2%80%AFPM.png)<!-- Replace with actual path -->
+![OLifie Mockup]()
+![wnd](h)<!-- Replace with actual path -->
+
+
+<p align="center">
+  <img src="https://github.com/ABHIJATSARARI/oliife_initial/blob/main/utils/Screenshot%202024-08-12%20at%2012.48.42%E2%80%AFAM.png" alt="OLifie Mockup 1" width="45%">
+  <img src="https://github.com/ABHIJATSARARI/oliife_initial/blob/main/utils/Screenshot%202024-08-12%20at%206.20.34%E2%80%AFPM.png" alt="OLifie Mockup 2" width="45%">
+</p>
 
 ## ✨ Features
 
