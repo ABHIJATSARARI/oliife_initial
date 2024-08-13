@@ -10,8 +10,8 @@ OLifie is an innovative mobile application designed as a comprehensive life orga
 ## 🖼️ App Mockup
 
 <p align="center">
-  <img src="https://github.com/ABHIJATSARARI/oliife_initial/blob/main/utils/Screenshot%202024-08-12%20at%2012.48.42%E2%80%AFAM.png" alt="OLifie Mockup 1" width="45%">
-  <img src="https://github.com/ABHIJATSARARI/oliife_initial/blob/main/utils/Screenshot%202024-08-12%20at%206.20.34%E2%80%AFPM.png" alt="OLifie Mockup 2" width="43%">
+  <img src="https://github.com/ABHIJATSARARI/oliife_initial/blob/main/utils/Screenshot_2024-08-12_at_12.48.42_AM-removebg-preview.png" alt="OLifie Mockup 1" width="45%">
+  <img src="https://github.com/ABHIJATSARARI/oliife_initial/blob/main/utils/Screenshot_2024-08-12_at_6.20.34_PM-removebg-preview.png" alt="OLifie Mockup 2" width="43%">
 </p>
 
 ## ✨ Features
