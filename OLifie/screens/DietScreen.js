@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, ImageBackground, Modal, Button, Alert, ActivityIndicator, Image, TextInput } from 'react-native';
+import React, { useState, useEffect, useRef } from 'react';
+import { View, Text, StyleSheet, TouchableOpacity, ImageBackground, Modal, Button, Alert, ActivityIndicator, TextInput, ScrollView } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import * as ImagePicker from 'expo-image-picker';
 import MealLogging from '../components/MealLogging';
@@ -11,6 +11,7 @@ const DietScreen = ({ navigation }) => {
     nutrition: 2000,
     calories: 1500,
     intakeCount: 3,
+    meals: [],
   });
   const [modalVisible, setModalVisible] = useState(false);
   const [imageUri, setImageUri] = useState(null);
@@ -18,25 +19,18 @@ const DietScreen = ({ navigation }) => {
   const [error, setError] = useState(false);
   const [foodName, setFoodName] = useState('');
   const [quantity, setQuantity] = useState('');
-  const [meals, setMeals] = useState([
-    { name: 'Breakfast: Oatmeal', time: '8:00 AM' },
-    { name: 'Lunch: Salad', time: '1:00 PM' },
-    { name: 'Dinner: Grilled Chicken', time: '7:00 PM' },
-  ]);
+  const [waterModalVisible, setWaterModalVisible] = useState(false);
+  const mealLoggingRef = useRef(null);
 
   const updateData = (newData) => {
-    setData((prevData) => ({
-      ...prevData,
-      ...newData,
-    }));
+    setData(newData);
   };
 
   const handleWaterConsumption = (amount) => {
-    setData((prevData) => ({
-      ...prevData,
-      waterConsumed: prevData.waterConsumed + amount,
-    }));
-    setModalVisible(false);
+    if (mealLoggingRef.current) {
+      mealLoggingRef.current.addWaterIntake(amount);
+    }
+    setWaterModalVisible(false);
   };
 
   const handleImageCapture = async () => {
@@ -59,24 +53,19 @@ const DietScreen = ({ navigation }) => {
       if (response === 'Not a food Image') {
         Alert.alert('Error', 'Uploaded image is not a food.');
       } else {
-        const { nutrition, calories, foodName } = response;
-        updateData({
-          nutrition: data.nutrition + nutrition,
-          calories: data.calories + calories,
-          intakeCount: data.intakeCount + 1,
-        });
-        const currentTime = new Date().toLocaleTimeString();
-        setMeals((prevMeals) => [
-          ...prevMeals,
-          { name: foodName, time: currentTime },
-        ]);
+        const { foodName, nutrition, calories } = response;
+        if (mealLoggingRef.current) {
+          mealLoggingRef.current.addMeal(foodName, nutrition, calories);
+        }
         Alert.alert('Success', 'Data updated successfully.');
+        setFoodName('');
+        setQuantity('');
       }
       setLoading(false);
     } catch (error) {
       setLoading(false);
       setError(true);
-      setTimeout(() => setError(false), 3000); // Reset error state after 3 seconds
+      setTimeout(() => setError(false), 3000);
     }
   };
 
@@ -84,7 +73,7 @@ const DietScreen = ({ navigation }) => {
     <ImageBackground style={styles.background}>
       <Text style={styles.headerText}>Diet</Text>
       <View style={styles.container}>
-        <TouchableOpacity onPress={handleImageCapture} style={styles.waterIconContainer}>
+        <TouchableOpacity onPress={() => setWaterModalVisible(true)} style={styles.waterIconContainer}>
           <Ionicons name="water" size={150} color="#ADD8E6" style={styles.waterIcon} />
         </TouchableOpacity>
         <Text style={[styles.waterText, data.waterConsumed > 2000 && { color: 'red' }]}>
@@ -114,7 +103,12 @@ const DietScreen = ({ navigation }) => {
           </TouchableOpacity>
           <View style={styles.mealListContainer}>
             <Text style={styles.listTitle}>Diet List</Text>
-            <MealLogging updateData={updateData} imageUri={imageUri} setLoadingState={setLoading} setErrorState={setError} meals={meals} />
+            <ScrollView>
+              <MealLogging
+                ref={mealLoggingRef}
+                updateData={updateData}
+              />
+            </ScrollView>
           </View>
         </View>
         <TouchableOpacity style={styles.menuButton} onPress={() => navigation.navigate('Menu')}>
@@ -142,6 +136,16 @@ const DietScreen = ({ navigation }) => {
           </View>
         </View>
       </Modal>
+      <Modal visible={waterModalVisible} transparent={true}>
+        <View style={styles.modalContainer}>
+          <View style={styles.modalContent}>
+            <Text>Select Water Intake</Text>
+            <Button title="250 ml" onPress={() => handleWaterConsumption(250)} />
+            <Button title="500 ml" onPress={() => handleWaterConsumption(500)} />
+            <Button title="750 ml" onPress={() => handleWaterConsumption(750)} />
+          </View>
+        </View>
+      </Modal>
       {loading && (
         <View style={styles.loadingContainer}>
           <ActivityIndicator size="large" color="#00ff00" />
@@ -150,7 +154,6 @@ const DietScreen = ({ navigation }) => {
       )}
       {error && (
         <View style={styles.errorContainer}>
-          <Image source={require('../assets/error-icon.png')} style={styles.errorIcon} />
           <Text style={styles.errorText}>Connection failed</Text>
         </View>
       )}
@@ -211,37 +214,39 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   cameraContainer: {
-    width: '30%',
     alignItems: 'center',
+    justifyContent: 'center',
+    flex: 1,
+    marginRight: 20,
+    borderRadius: 15,
+    padding: 20,
+    backgroundColor: 'rgba(255, 255, 255, 0.2)',
   },
   cameraText: {
     color: '#fff',
-    textAlign: 'center',
     marginTop: 10,
+    textAlign: 'center',
+    fontSize: 16,
   },
   mealListContainer: {
-    width: '70%',
-    padding: 10,
+    flex: 2,
+    marginLeft: 20,
+    padding: 20,
+    backgroundColor: 'rgba(255, 255, 255, 0.2)',
+    borderRadius: 15,
+    height: 200, // Fixed height for the list container
+    width: '90%', // Increased width for the list container
   },
   listTitle: {
-    fontSize: 18,
-    fontWeight: 'bold',
+    fontSize: 20,
     color: '#fff',
-    textAlign: 'center',
-    marginBottom: 5,
+    marginBottom: 10,
+    textAlign: 'center', // Center the text
   },
   menuButton: {
     position: 'absolute',
     bottom: 20,
     right: 20,
-    backgroundColor: '#4CAF50',
-    padding: 10,
-    borderRadius: 50,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.3,
-    shadowRadius: 4,
-    elevation: 5,
   },
   modalContainer: {
     flex: 1,
@@ -250,23 +255,24 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(0, 0, 0, 0.5)',
   },
   modalContent: {
-    backgroundColor: '#fff',
+    width: 300,
     padding: 20,
+    backgroundColor: '#fff',
     borderRadius: 10,
   },
   input: {
     borderBottomWidth: 1,
-    borderBottomColor: '#ccc',
-    marginBottom: 10,
-    padding: 5,
-    width: '100%',
+    marginVertical: 10,
   },
   loadingContainer: {
     position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: [{ translateX: -50 }, { translateY: -50 }],
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
   },
   loadingText: {
     color: '#fff',
@@ -274,31 +280,16 @@ const styles = StyleSheet.create({
   },
   errorContainer: {
     position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: [{ translateX: -50 }, { translateY: -50 }],
+    bottom: 50,
+    left: 0,
+    right: 0,
+    justifyContent: 'center',
     alignItems: 'center',
   },
   errorText: {
-    color: '#ff0000',
+    color: '#fff',
     marginTop: 10,
   },
-  errorIcon: {
-    width: 50,
-    height: 50,
-    resizeMode: 'contain',
-    justifyContent: 'flex-end',
-    marginTop: 20,
-  },
-
-  errorIcon:{
-    width: 50, // Adjusted size
-    height: 50, // Adjusted size
-    resizeMode: 'contain',
-    justifyContent: 'flex-end',
-    marginTop : 20,
-  },
-  
 });
 
 export default DietScreen;

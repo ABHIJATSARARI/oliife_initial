@@ -4,13 +4,13 @@ import { View, Text, TextInput, TouchableOpacity, StyleSheet, ScrollView } from 
 import { Ionicons } from '@expo/vector-icons';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 
-const apiKey = 'AIzaSyBkKd5xkNafogsquCZZtUOmWU3LlCS5YNQ'; // Replace with your actual API key
+const apiKey = 'AIzaSyDQ9BEt8qpggYKMZjcTowljOhmwnLhq1fM'; // Replace with your actual API key
 const genAI = new GoogleGenerativeAI(apiKey);
 
 const model = genAI.getGenerativeModel({
-  model: 'gemini-1.5-pro',
-  systemInstruction: "For there you need to call user or pronounse him/her as buddy , in this converstation you working as a ai campion for user heath and any other kind of help to organize its daily life.",
-});
+    model: "gemini-1.5-pro",
+    systemInstruction: "For there you need to call user or pronounse him/her as buddy , in this converstation you working as a ai campion for user heath and any other kind of help to organize its daily life.",
+  });
 
 const generationConfig = {
   temperature: 1,
