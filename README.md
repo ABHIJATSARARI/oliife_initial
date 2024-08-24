@@ -34,6 +34,10 @@ OLifie harnesses the power of the Gemini API to deliver intelligent, personalize
 - Process food images to extract nutritional information, helping you make informed dietary choices.
 - Provide real-time, context-aware advice and reminders across all app screens.
 
+## Demo Video
+
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/1HhXUAAyQ7U/0.jpg)](https://www.youtube.com/watch?v=1HhXUAAyQ7U)
+
 ## 📱 Getting Started
 
 1. Clone the repository:
@@ -63,11 +67,11 @@ OLifie harnesses the power of the Gemini API to deliver intelligent, personalize
 
 ## 💬 Contributing
 
-We welcome contributions! Please see our [CONTRIBUTING.md](https://github.com/YourUsername/YourRepoName/blob/main/CONTRIBUTING.md) for details.
+We welcome contributions! 
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](https://github.com/YourUsername/YourRepoName/blob/main/LICENSE) file for details.
+This project is licensed under the MIT License 
 
 ## 📧 Contact
 
