@@ -1,7 +1,7 @@
 // components/ApiHandler.js
 import { GoogleGenerativeAI } from '@google/generative-ai';
 
-const apiKey = 'AIzaSyBkKd5xkNafogsquCZZtUOmWU3LlCS5YNQ'; // Replace with your actual API key
+const apiKey = 'AIzaSyDQ9BEt8qpggYKMZjcTowljOhmwnLhq1fM'; // Replace with your actual API key
 const genAI = new GoogleGenerativeAI(apiKey);
 
 const model = genAI.getGenerativeModel({
