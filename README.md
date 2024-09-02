@@ -80,3 +80,5 @@ For questions or feedback, please contact us at [support@olifieapp.com](mailto:s
 ---
 
 *Developed with ❤️ by the OLifie Team.*
+
+# The app is futuristic and has full potential. It is still in the development phase because the application and its idea are big. The app harnesses the full potential of AI.
