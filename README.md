@@ -40,7 +40,7 @@ OLifie harnesses the power of the Gemini API to deliver intelligent, personalize
 
 ## 📱 Getting Started
 
-1. Clone the repository:
+1. Clone the repository (change the repo name as per project url):
     ```bash
     git clone https://github.com/YourUsername/YourRepoName.git
     ```
