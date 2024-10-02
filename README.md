@@ -36,7 +36,7 @@ OLifie harnesses the power of the Gemini API to deliver intelligent, personalize
 
 ## Demo Video
 
-[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/1HhXUAAyQ7U/0.jpg)](https://www.youtube.com/watch?v=1HhXUAAyQ7U)
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/1HhXUAAyQ7U/0.jpg)](https://youtu.be/XVZvUAgu6rE)
 
 ## 📱 Getting Started
 
